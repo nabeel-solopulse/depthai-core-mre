@@ -1,0 +1,1 @@
+cmake -S. -Bbuild -D'depthai_DIR=depthai-core/build'

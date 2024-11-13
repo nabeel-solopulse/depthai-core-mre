@@ -1,14 +1,12 @@
 cmake_minimum_required(VERSION 3.4)
 
-# Add depthai-core dependency
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/depthai-core EXCLUDE_FROM_ALL)
-
 # Create a project with name 'myapp'
 set(TARGET_NAME myapp)
 project(${TARGET_NAME})
 
 # Dependencies (optional, only used for example)
 find_package(OpenCV REQUIRED)
+find_package(depthai CONFIG REQUIRED)
 
 # Add source files
 add_executable("${TARGET_NAME}"
@@ -17,7 +15,7 @@ add_executable("${TARGET_NAME}"
 
 # Link with libraries
 target_link_libraries(${TARGET_NAME}
-    PUBLIC
+    PRIVATE
         depthai::opencv
         ${OpenCV_LIBS} # optional, used for example
 )
